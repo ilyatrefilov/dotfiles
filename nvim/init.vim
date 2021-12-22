@@ -23,12 +23,14 @@ Plug 'easymotion/vim-easymotion'
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
+" Rainbow parens
+Plug 'frazrepo/vim-rainbow'
 
 " Git 
 Plug 'tpope/vim-fugitive'
 
 " Language plugins
+Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
 
 call plug#end()
@@ -50,7 +52,7 @@ set updatetime=100
 set pumblend=20
 set winblend=20
 set nobackup
-syntax on
+syntax enable
 
 " GUI
 let base16colorspace=256 
@@ -219,12 +221,14 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
+" rainbow
+let g:rainbow_active = 1
+
 
 " NerdTree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
 " Pair completion
 inoremap {      {}<Left>
@@ -243,6 +247,33 @@ nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 nnoremap <C-q> :q<CR>
 inoremap jk <Esc>
+
+" Yank line
+nnoremap Y y$
+
+" Keep moving centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+" Keep cursor where it is on join
+nnoremap J mzJ'z 
+
+" Customize breakpoints
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+
+" Mutate jumplist
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count: "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count: "") . 'j'
+
+" Moving text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <Esc><:m .+1<CR>==
+inoremap <C-k> <Esc>:m .-2<CR>==
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
 
 " No arrow to use the home row
 nnoremap <up> <nop>
