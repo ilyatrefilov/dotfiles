@@ -45,7 +45,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set("n", "<leader>wl", function()
@@ -56,17 +56,18 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, bufopts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end)
+  vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end)
+  vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end)
   require("lsp_signature").on_attach({
       doc_lines = 0,
       handler_opts = {
           border = "none",
       },
   }, bufnr)
+
 end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("lspconfig").tsserver.setup({
         on_attach = on_attach,
@@ -87,16 +88,56 @@ require("lspconfig").gopls.setup({
                                 unusedparams = true,
                         },
                         staticcheck = true,
+                        directoryFilters = {"-**/node_modules"},
                 },
         },
         capabilities = capabilities,
 })
 
-require("lspconfig").rust_analyzer.setup({
+-- require("lspconfig").rust_analyzer.setup({
+--         on_attach = on_attach,
+--         settings = {
+--             ["rust-analyzer"] = {
+--                 cargo = {
+--                     allFeatures = true,
+--                 },
+--                 completion = {
+--                     postfix = {
+--                         enable = false,
+--                     },
+--                 },
+--             },
+--         },
+--         flags = {
+--             debounce_text_changes = 150,
+--         },
+--         capabilities = capabilities, 
+-- })
+
+require("rust-tools").setup({
+    server = {
         on_attach = on_attach,
-        cmd = { "rustup", "run", "stable", "rust-analyzer"},
-        capabilities = capabilities, 
+        cargo = {
+            allFeatures = true,
+        }
+    },
+    tools = {
+        inlay_hints = {
+            only_current_line = true,
+        },
+    },
 })
+
+require("lspconfig").clangd.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+})
+
+require("lspconfig").angularls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+})
+
 
 require("fidget").setup()
 
@@ -105,4 +146,12 @@ require("luasnip.loaders.from_vscode").lazy_load({
         exclude = {},
 })
 
+-- UI enhancements
 
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = false,
+})

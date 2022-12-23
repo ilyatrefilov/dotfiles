@@ -1,4 +1,5 @@
 vim.g.config_colorscheme = "tokyonight-night"
+-- vim.g.config_colorscheme = "base16-gruvbox-light-medium"
 
 function ColorMyPencils()
 

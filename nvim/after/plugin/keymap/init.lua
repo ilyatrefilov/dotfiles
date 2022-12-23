@@ -9,7 +9,6 @@ local nmap = Remap.nmap
 
 
 nnoremap("Q", "<nop>")
-nnoremap("<leader>pv", ":Ex<CR>")
 
 -- Sizing 
 nnoremap("<leader>+", ":vertical resize +5<CR>")
@@ -23,6 +22,8 @@ nnoremap("Y", "yg$")
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
 nnoremap("J", "mzJ`z")
+nnoremap("<C-d>", "<C-d>zz")
+nnoremap("<C-u>", "<C-u>zz")
 
 
 xnoremap("<leader>p", "\"_dP")
@@ -35,5 +36,7 @@ vnoremap("<leader>d", "\"_d")
 inoremap("jk", "<Esc>")
 nnoremap("<leader>w", ":w<CR>")
 inoremap("<C-c>", "<Esc>")
+
+nnoremap("<leader>qa", ":1, $bd!<CR>")
 
 
