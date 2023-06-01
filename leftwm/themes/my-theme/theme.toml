@@ -1,5 +1,5 @@
 border_width = 2
-margin = 4
+margin = [4, 8, 4, 8]
 # default_border_color = "#5e81ac"
 default_border_color = "#3b5261"
 # focused_border_color = "#a3be8c"

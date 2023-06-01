@@ -13,15 +13,15 @@
     mousekey: "Mod4",
     workspaces: [],
     tags: [
-        "vpn",
+        "telegram",
         "web",
         "shell",
         "teams",
-        "telegram",
+        "5",
         "6",
         "7",
-        "8",
-        "9",
+        "books",
+        "vpn",
     ],
     max_window_width: None,
     layouts: [
@@ -43,7 +43,7 @@
     layout_mode: Workspace,
     insert_behavior: Bottom,
     scratchpad: [
-        (name: "Alacritty", value: "alacritty", x: 860, y: 390, height: 300, width: 200),
+        (name: "Alacritty", value: "alacritty",x: 700,y:50,height: 600,width: 1200 ),
     ],
     window_rules: [],
     disable_current_tag_swap: false,
@@ -54,7 +54,7 @@
     sloppy_mouse_follows_focus: true,
     keybind: [
         (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "d"),
-        (command: Execute, value: "rofi -show filebrowser", modifier: ["modkey"], key: "p"),
+        (command: Execute, value: "Dolphin", modifier: ["modkey"], key: "p"),
         (command: Execute, value: "alacritty", modifier: ["modkey"], key: "Return"),
         (command: Execute, value: "shutdown -h now", modifier: ["modkey"], key: "Escape"),
         (command: Execute, value: "flameshot gui", modifier: [],  key: "Print"),
@@ -64,6 +64,7 @@
         (command: Execute, value: "pactl set-source-mute @DEFAULT_SOURCE@ toggle ", modifier: [],  key: "XF86XK_AudioMicMute"),
         (command: Execute, value: "brightnessctl s +10%", modifier: [],  key: "XF86XK_MonBrightnessUp"),
         (command: Execute, value: "brightnessctl s 10%-", modifier: [],  key: "XF86XK_MonBrightnessDown"),
+        (command: Execute, value: "leftlock -b", modifier: ["modkey", "Shift"],  key: "l"),
         (command: ToggleFullScreen, value: "", modifier: ["modkey",], key: "f"),
         (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
@@ -104,6 +105,7 @@
         (command: MoveToTag, value: "7", modifier: ["modkey", "Shift"], key: "7"),
         (command: MoveToTag, value: "8", modifier: ["modkey", "Shift"], key: "8"),
         (command: MoveToTag, value: "9", modifier: ["modkey", "Shift"], key: "9"),
+        (command: ToggleScratchPad, value: "Alacritty", modifier: ["modkey"], key: "e"),
     ],
     state_path: None,
 )

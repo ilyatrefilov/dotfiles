@@ -18,8 +18,14 @@ fi
 
 #set background
 if [ -x "$(command -v feh)" ]; then
-  feh --bg-fill "$SCRIPTPATH"/wallpaper.png
+  feh --bg-fill "$SCRIPTPATH"/house.jpeg
 fi
+
+#boot redshift
+# if [ -x "$(command -v redshift)" ]; then
+# 	pkill redshift
+# 	redshift &
+# fi
 
 # boot dunst
 if [ -x "$(command -v dunst)" ]; then
@@ -36,7 +42,8 @@ if [ -x "$(command -v polybar)" ]; then
   pkill polybar
   monitors="$(polybar -m | sed s/:.*// | tac)"
   while read -r display; do
-    MONITOR=$display polybar -c "$SCRIPTPATH/polybar.config" mainbar &> /dev/null &
+    # MONITOR=$display polybar -c "$SCRIPTPATH/polybar.config" mainbar &> /dev/null &
+    MONITOR=$display polybar -c "$SCRIPTPATH/polybar.config" mainbar &> /tmp/poly.log &
   done <<< "$monitors"
   exit 0
 fi

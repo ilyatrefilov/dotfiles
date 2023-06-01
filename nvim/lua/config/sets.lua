@@ -26,4 +26,5 @@ vim.opt.showmode = false
 vim.opt.shortmess:append("c")
 vim.opt.updatetime = 50
 vim.opt.cmdheight = 1
+vim.opt.background = "dark"
 vim.g.mapleader = " "

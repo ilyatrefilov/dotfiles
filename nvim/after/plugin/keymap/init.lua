@@ -39,4 +39,3 @@ inoremap("<C-c>", "<Esc>")
 
 nnoremap("<leader>qa", ":1, $bd!<CR>")
 
-

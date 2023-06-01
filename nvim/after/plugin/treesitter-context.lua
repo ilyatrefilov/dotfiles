@@ -17,6 +17,7 @@ require("treesitter-context").setup({
             rust = {
                 "loop_expression",
                 "impl_item",
+                "block",
             },
 
             typescript = {
