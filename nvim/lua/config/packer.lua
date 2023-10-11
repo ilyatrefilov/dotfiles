@@ -36,7 +36,7 @@ return require("packer").startup(function()
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
+           { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
@@ -65,6 +65,7 @@ return require("packer").startup(function()
     use("ray-x/lsp_signature.nvim")
     use("j-hui/fidget.nvim")
     use("simrat39/rust-tools.nvim")
+    use({"codota/tabnine-nvim", run = "./dl_binaries.sh"})
 
 
     -- Git worktree
@@ -103,6 +104,7 @@ return require("packer").startup(function()
     use("folke/tokyonight.nvim")
     use("ellisonleao/gruvbox.nvim")
     use("luisiacc/gruvbox-baby")
+    use 'navarasu/onedark.nvim'
     -- Treesitter
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate"
@@ -128,7 +130,11 @@ return require("packer").startup(function()
             require("nvim-surround").setup()
         end
     })
-    use("lukas-reineke/indent-blankline.nvim")
+    -- use("lukas-reineke/indent-blankline.nvim")
+    use({
+        "echasnovski/mini.nvim", 
+        branch = "stable"
+    })
     use({
         "numToStr/Comment.nvim",
         config = function()
@@ -142,4 +148,5 @@ return require("packer").startup(function()
             require("zen-mode").setup()
         end
     })
+    use("iamcco/markdown-preview.nvim")
 end)

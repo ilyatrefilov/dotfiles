@@ -9,6 +9,7 @@ lsp.ensure_installed({
     "clangd",
     "cssls",
     "rust_analyzer",
+    "zls",
     "jedi_language_server",
     "emmet_ls",
     "angularls",
@@ -17,7 +18,7 @@ lsp.ensure_installed({
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+    ["<Tab>"] = cmp.mapping.confirm({ select = false }),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -30,6 +31,7 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings,
     sources = {
         { name = 'path' },
+        { name = 'cmp_tabnine' },
         { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'luasnip' },
@@ -54,8 +56,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, bufopts)
-    vim.keymap.set("n", "<C-j>", function() vim.diagnostic.goto_next() end)
-    vim.keymap.set("n", "<C-k>", function() vim.diagnostic.goto_prev() end)
+    vim.keymap.set("n", "<C-]>", function() vim.diagnostic.goto_next() end)
+    vim.keymap.set("n", "<C-[>", function() vim.diagnostic.goto_prev() end)
     require("lsp_signature").on_attach({
         doc_lines = 0,
         handler_opts = {
