@@ -36,7 +36,7 @@ return require("packer").startup(function()
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
-           { 'williamboman/mason.nvim' },
+            { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
@@ -52,6 +52,7 @@ return require("packer").startup(function()
             { 'rafamadriz/friendly-snippets' },
         }
     })
+    use("simrat39/rust-tools.nvim")
 
 
     use({
@@ -63,9 +64,11 @@ return require("packer").startup(function()
         end
     })
     use("ray-x/lsp_signature.nvim")
-    use("j-hui/fidget.nvim")
-    use("simrat39/rust-tools.nvim")
-    use({"codota/tabnine-nvim", run = "./dl_binaries.sh"})
+    use({
+        "j-hui/fidget.nvim",
+        tag = 'legacy',
+    })
+    -- use({"codota/tabnine-nvim", run = "./dl_binaries.sh"})
 
 
     -- Git worktree
@@ -77,8 +80,6 @@ return require("packer").startup(function()
     -- Venn
     use("jbyuki/venn.nvim")
 
-    -- RFC Explorer
-    use("mhinz/vim-rfc")
 
     -- Undotree
     use("mbbill/undotree")
@@ -104,7 +105,7 @@ return require("packer").startup(function()
     use("folke/tokyonight.nvim")
     use("ellisonleao/gruvbox.nvim")
     use("luisiacc/gruvbox-baby")
-    use 'navarasu/onedark.nvim'
+    use ({ "catppuccin/nvim", as = "catppuccin" })
     -- Treesitter
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate"
@@ -130,7 +131,6 @@ return require("packer").startup(function()
             require("nvim-surround").setup()
         end
     })
-    -- use("lukas-reineke/indent-blankline.nvim")
     use({
         "echasnovski/mini.nvim", 
         branch = "stable"

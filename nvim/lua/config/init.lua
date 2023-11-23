@@ -7,5 +7,6 @@ require("config.miniindent")
 -- require("config.blankline")
 require("config.neogit")
 require("config.cursorline")
-require("config.tabnine")
+-- require("config.tabnine")
+require("config.catppuccin")
 

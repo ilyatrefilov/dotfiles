@@ -3,7 +3,8 @@ set -gx PATH $PATH /usr/local/go/bin
 set -gx PATH $PATH /home/ilya/go/bin
 set -gx PATH $PATH /home/ilya/.local/bin
 set -gx PATH $PATH /home/ilya/.cargo/bin
-set -gx PATH $PATH  /home/ilya/.yarn/bin
+set -gx PATH $PATH /home/ilya/.yarn/bin
+set -gx PATH $PATH /home/ilya/.porter
 
 alias vim nvim
 alias k kubectl
@@ -17,6 +18,7 @@ alias gco 'git checkout'
 alias gs 'git status'
 alias ga 'git add'
 alias gl 'git log'
+alias wtic 'wezterm imgcat'
 
 bind \cs tmux-sessionizer
 
@@ -27,7 +29,7 @@ zoxide init fish | source
 
 
 
-# TokyoNight Color Palette
+# # TokyoNight Color Palette
 set -l foreground c0caf5
 set -l selection 33467c
 set -l comment 565f89
@@ -60,5 +62,7 @@ set -g fish_pager_color_progress $comment
 set -g fish_pager_color_prefix $cyan
 set -g fish_pager_color_completion $foreground
 set -g fish_pager_color_description $comment
+#
 
 
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /home/ilya/.ghcup/bin # ghcup-env

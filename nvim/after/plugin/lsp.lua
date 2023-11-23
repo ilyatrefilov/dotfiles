@@ -1,3 +1,4 @@
+-- LSP setup
 local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
@@ -8,13 +9,13 @@ lsp.ensure_installed({
     "golangci_lint_ls",
     "clangd",
     "cssls",
-    "rust_analyzer",
     "zls",
     "jedi_language_server",
     "emmet_ls",
     "angularls",
 })
 
+-- CMP setup
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -31,7 +32,6 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings,
     sources = {
         { name = 'path' },
-        { name = 'cmp_tabnine' },
         { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'luasnip' },
@@ -39,6 +39,7 @@ lsp.setup_nvim_cmp({
 })
 
 
+-- Key bindings
 local on_attach = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
@@ -69,13 +70,18 @@ end
 
 lsp.on_attach(on_attach)
 
+
 lsp.setup()
 
-local rust_lsp = lsp.build_options('rust_analyzer', {
-    single_file_support = false,
+local rust_tools = require("rust-tools")
+
+rust_tools.setup({
+    server = {
+        on_attach = on_attach,
+    }
 })
 
-require("rust-tools").setup({ server = rust_lsp })
+
 
 require("fidget").setup()
 
