@@ -18,6 +18,7 @@ alias gco 'git checkout'
 alias gs 'git status'
 alias ga 'git add'
 alias gl 'git log'
+alias hx helix
 alias wtic 'wezterm imgcat'
 
 bind \cs tmux-sessionizer
@@ -65,4 +66,8 @@ set -g fish_pager_color_description $comment
 #
 
 
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /home/ilya/.ghcup/bin # ghcup-env
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+set -gx PATH $HOME/.cabal/bin $PATH /home/ilya/.ghcup/bin # ghcup-env
+
+# opam configuration
+source /home/ilya/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
