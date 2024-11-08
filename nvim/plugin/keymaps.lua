@@ -23,8 +23,8 @@ set('n', 'N', 'Nzzzv', { noremap = true })
 set('n', '<C-d>', '<C-d>zz', { noremap = true })
 set('n', '<C-u>', '<C-u>zz', { noremap = true })
 -- Move text in visual mode
-set('v', 'J', ":m '>1<CR>gv=gv", { noremap = true })
-set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
+-- set('v', 'J', ":m '>1<CR>gv=gv", { noremap = true })
+-- set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
 -- Close all buffers shortcut
 set('n', '<leader>qa', ':1, $bd!<CR>', { noremap = true })
 

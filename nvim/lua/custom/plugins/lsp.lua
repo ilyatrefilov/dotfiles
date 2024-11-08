@@ -6,8 +6,6 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-      { 'j-hui/fidget.nvim', opts = {} },
-
       { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
@@ -52,6 +50,12 @@ return {
               callback = vim.lsp.buf.clear_references,
             })
           end
+
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            map('<leader>th', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+            end, '[T]oogle inlay hints')
+          end
         end,
       })
 
@@ -61,9 +65,10 @@ return {
       local servers = {
         clangd = {},
         gopls = {},
+        -- golangci_lint_ls = {},
         pyright = {},
-        rust_analyzer = {},
-        tsserver = {},
+        -- rust_analyzer = {},
+        ts_ls = {},
 
         lua_ls = {
           settings = {
@@ -80,7 +85,7 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format lua code
+        'stylua',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

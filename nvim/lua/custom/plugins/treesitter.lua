@@ -58,6 +58,7 @@ return {
       auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
+      inlay_hints = { enable = true },
     },
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
