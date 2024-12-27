@@ -6,6 +6,7 @@ return {
       -- vim.cmd.colorscheme 'kanagawa'
     end,
   },
+
   {
     'EdenEast/nightfox.nvim',
     init = function()
@@ -17,11 +18,12 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      -- vim.g.gruvbox_material_foreground = 'original'
-      vim.g.gruvbox_material_foreground = 'mix'
+      vim.g.gruvbox_material_foreground = 'original'
+      -- vim.g.gruvbox_material_foreground = 'mix'
       vim.g.gruvbox_material_enable_italic = true
       vim.g.gruvbox_material_enable_bold = true
       vim.g.gruvbox_material_background = 'hard'
+      -- vim.g.gruvbox_material_transparent_background = 1
       vim.g.gruvbox_material_dim_inactive_windows = true
       vim.cmd.colorscheme 'gruvbox-material'
     end,
