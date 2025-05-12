@@ -10,7 +10,7 @@ set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]ui
 --
 set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 set('i', 'jk', '<Esc>', { desc = 'Quick exit to normal mode' })
-set('n', '<C-s>', ':w<CR>', { desc = 'Save file shortcut' })
+set('n', '<C-s>', ':w<CR>', { desc = 'Save file shortcut', silent = true })
 
 -- Disable arrow keys in normal mode
 set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')

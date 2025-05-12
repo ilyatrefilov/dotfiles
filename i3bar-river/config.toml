@@ -1,6 +1,0 @@
-position="bottom"
-layer="bottom"
-font = "JetBrains Mono NL 10"
-height = 20
-show_layout_name=false
-command = "i3status-rs"

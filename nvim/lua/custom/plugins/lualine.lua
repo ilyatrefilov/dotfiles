@@ -6,7 +6,7 @@ return {
     -- local kanagawa = require 'lualine.themes.kanagawa'
     require('lualine').setup {
       options = { theme = material_gruvbox },
-      extensions = { 'oil', 'mason', 'trouble' },
+      extensions = { 'mason', 'trouble' },
     }
   end,
 }
